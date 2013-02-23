@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/Tietokantasovellus">
+
+
+ <Resource name="jdbc/arto" 
+
+
+              auth="Container"
+
+
+              type="javax.sql.DataSource" 
+
+
+              username="arto" 
+
+
+              password="arto"
+
+
+              driverClassName="org.postgresql.Driver"
+
+
+              url="jdbc:postgresql:arto"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+
+              maxActive="15" 
+
+
+              maxIdle="3"/>
+
+
+</Context>
+
+
