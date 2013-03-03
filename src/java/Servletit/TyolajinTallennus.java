@@ -1,23 +1,24 @@
-package Servletit;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servletit;
+
 import Sovelluslogiikka.Kayttaja;
 import Tietokantayhteydet.TKYhteysProjekti;
+import Tietokantayhteydet.TKYhteysTyolaji;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Tallentaa pääkäyttäjän luoman projektin
+ * Tallentaa työlajin.
  * @author Arto
  */
-@WebServlet(name = "ProjektinTallennus", urlPatterns = {"/ProjektinTallennus"})
-public class ProjektinTallennus extends SuperServlet {
+public class TyolajinTallennus extends SuperServlet {
 
 
     @Override
@@ -28,8 +29,8 @@ public class ProjektinTallennus extends SuperServlet {
 
             String nimi = request.getParameter("nimi");
             try {
-                new TKYhteysProjekti().lisaaProjekti(nimi);
-                
+                new TKYhteysTyolaji().lisaaTyolaji(nimi);
+
             } catch (Exception e) {
                 System.out.println(e);
             } finally {
@@ -37,6 +38,4 @@ public class ProjektinTallennus extends SuperServlet {
             }
         }
     }
-    
-
 }

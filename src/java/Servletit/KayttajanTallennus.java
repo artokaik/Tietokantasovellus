@@ -1,34 +1,34 @@
-package Servletit;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servletit;
+
 import Sovelluslogiikka.Kayttaja;
-import Tietokantayhteydet.TKYhteysProjekti;
+import Tietokantayhteydet.TKYhteysKayttaja;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Tallentaa pääkäyttäjän luoman projektin
+ * Tallentaa requestin parametrina tulevan käyttäjän tiedot tietokantaan.
+ * 
  * @author Arto
  */
-@WebServlet(name = "ProjektinTallennus", urlPatterns = {"/ProjektinTallennus"})
-public class ProjektinTallennus extends SuperServlet {
+public class KayttajanTallennus extends SuperServlet {
 
-
-    @Override
+ @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         if (this.onkoKirjautunut(request, response)) {
 
-            String nimi = request.getParameter("nimi");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
             try {
-                new TKYhteysProjekti().lisaaProjekti(nimi);
+                new TKYhteysKayttaja().lisaaKayttaja(username, password, false);
                 
             } catch (Exception e) {
                 System.out.println(e);
@@ -37,6 +37,4 @@ public class ProjektinTallennus extends SuperServlet {
             }
         }
     }
-    
-
 }

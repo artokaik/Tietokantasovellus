@@ -5,20 +5,17 @@
 package Servletit;
 
 import Sovelluslogiikka.Kayttaja;
-import Tietokantayhteydet.TKYhteysKayttaja;
 import Tietokantayhteydet.TKYhteysOsallistuminen;
-import Tietokantayhteydet.TKYhteysProjekti;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Tulostaa sivun, jolla pääkäyttäjä voi lisätä osallistujan aiemmin määrittelemäänsä projektiin.
  * @author Arto
  */
 @WebServlet(name = "OsallistumisenLisays", urlPatterns = {"/OsallistumisenLisays"})
@@ -66,7 +63,6 @@ public class OsallistumisenLisays extends SuperServlet {
             out.println("<input type='hidden' name='projekti' value=" + request.getParameter("projekti") + ">");
             out.println("<input type='hidden' name='isManager' value=" + request.getParameter("true") + ">");
             try {
-//                dropDownProjekti(out, request, response);
                 dropDownKayttaja(out, request, response);
             } catch (Exception e) {
                 System.out.println(e);
@@ -80,22 +76,16 @@ public class OsallistumisenLisays extends SuperServlet {
         }
     }
 
-    private void dropDownProjekti(PrintWriter out, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ResultSet projektit = new TKYhteysOsallistuminen().haeUudetProjektit(new Kayttaja((Integer) request.getSession().getAttribute("kayttaja_id")));
-        out.println("<select name=" + "projekti" + ">");
-        while (projektit.next()) {
-            out.println("<option value=" + projektit.getString("id") + " >" + projektit.getString("project_name") + ">");
-        }
-        out.println("</select>");
-
-    }
 
     private void dropDownKayttaja(PrintWriter out, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ResultSet kayttajat = new TKYhteysOsallistuminen().haeUudetKayttajat(Integer.parseInt(request.getParameter("projekti")));
+        TKYhteysOsallistuminen yhteys = new TKYhteysOsallistuminen();
+        ResultSet kayttajat = yhteys.haeUudetKayttajat(Integer.parseInt(request.getParameter("projekti")));
         out.println("<select name=" + "kayttaja" + ">");
         while (kayttajat.next()) {
             out.println("<option value=" + kayttajat.getString("id") + " >" + kayttajat.getString("username") + ">");
         }
         out.println("</select>");
     }
+
+
 }

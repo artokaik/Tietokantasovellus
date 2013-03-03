@@ -18,6 +18,7 @@ CREATE TABLE works (
   description varchar NOT NULL UNIQUE
 );
 
+-- Osallistuminen
 CREATE TABLE participation (
   id serial PRIMARY KEY,
   user_id integer REFERENCES users(id) ON DELETE CASCADE,

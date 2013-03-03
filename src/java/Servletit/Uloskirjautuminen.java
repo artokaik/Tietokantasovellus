@@ -14,21 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Kirjaa käyttäjän ulos ja ohjaa tämän kirjautumissivulle.
  * @author Arto
  */
 @WebServlet(name = "Uloskirjautuminen", urlPatterns = {"/Uloskirjautuminen"})
 public class Uloskirjautuminen extends SuperServlet {
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,4 +28,7 @@ public class Uloskirjautuminen extends SuperServlet {
         session.removeAttribute("kayttaja_id");
         ohjaaSivulle("index.jsp", response);
     }
+
+
+
 }

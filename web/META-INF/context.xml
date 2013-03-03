@@ -11,20 +11,22 @@
               type="javax.sql.DataSource" 
 
 
-              username="arto" 
+              username="artokaik" 
 
 
-              password="arto"
+              password="392246b25c846737"
 
 
               driverClassName="org.postgresql.Driver"
 
 
-              url="jdbc:postgresql:arto"
+              url="jdbc:postgresql://localhost/artokaik"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 
-              maxActive="15" 
-
+              maxActive="60"
+              removeAbandoned="true"
+              removeAbandonedTimeout="5"
+              logAbandoned="true"
 
               maxIdle="3"/>
 

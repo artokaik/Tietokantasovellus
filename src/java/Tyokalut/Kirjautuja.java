@@ -7,17 +7,21 @@ import Tietokantayhteydet.TKYhteysKayttaja;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
+ * Hoitaa kirjautumisen.
  * @author Arto
  */
 public class Kirjautuja {
 
+    /**
+     *
+     * @param session
+     * @param tunnus
+     * @param salasana
+     * @return
+     * @throws Exception
+     */
     public static Kayttaja doKirjauduSisaan(HttpSession session, String tunnus, String salasana) throws Exception {
         TKYhteysKayttaja yhteys = new TKYhteysKayttaja();
         Kayttaja kayttaja = yhteys.haeKayttaja(tunnus, salasana);
@@ -29,6 +33,12 @@ public class Kirjautuja {
         return "kayttaja_id";
     }
 
+    /**
+     *
+     * @param session
+     * @return
+     * @throws Exception
+     */
     public static Kayttaja getKirjautunutKayttaja(HttpSession session) throws Exception{
 
         int kayttajaId = ((Integer) session.getAttribute(kayttajaSessioAvain())).intValue();

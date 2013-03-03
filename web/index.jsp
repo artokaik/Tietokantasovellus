@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Arton testisivu</title>
+        <title>Työajanseuranta</title>
     </head>
     <body>
         <p>Kirjaudu sisään.</p>
         <form action="Kirjautuminen" method="POST">
             <fieldset>
-                <legend>Anna käyttäjätunnus ja salasana</legend>
+                <legend>Anna käyttäjatunnus ja salasana</legend>
                 <label for="tunnus">Käyttäjätunnus:</label>
                 <input type="text" name="tunnus" id="tunnus" />
                 <label for="salasana">Salasana:</label>

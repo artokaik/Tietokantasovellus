@@ -17,17 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Hoitaa sisäänkirjautumisen.
  * @author Arto
  */
 @WebServlet(name = "Kirjautuminen", urlPatterns = {"/Kirjautuminen"})
 public class Kirjautuminen extends SuperServlet {
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        naytaLomake(request, response);
+            kirjautumisSivulle(response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,14 +44,8 @@ public class Kirjautuminen extends SuperServlet {
         } catch (Exception e) {
             System.out.println(e);
             request.setAttribute("virheviesti", "Tarkista käyttäjätunnus ja salasana");
-            naytaLomake(request, response);
         }
-    }
-
-    private void naytaLomake(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-//        asetaOtsikko("kirjautuminen", request);
-//        palautaJSP("kirjautumislomake.jsp", request, response);
-    }
+    }    
+    
 }
 

@@ -7,5 +7,5 @@
 --   
 -- 
 --  group by participation_id, work_id, works.description, project_name, username
-select * from projects
+select * from users
 
